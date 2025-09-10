@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<title>Turnario Vigili del Fuoco</title>
+<style>
+th, td {
+ text-align: center;
+ border: 1px solid black;}
+table {
+ border: 1px solid black;
+ border-collapse: collapse;}
+</style>
+</head>
+<body>
+<table>
+<colgroup>
+<col width="14.28%">
+<col width="14.28%">
+<col width="14.28%">
+<col width="14.28%">
+<col width="14.28%">
+<col width="14.28%">
+<col width="14.28%">
+</colgroup>
+<tr>
+<td><a href="javascript:mese(-1)">Mese-</a></td>
+<td colspan="5" id="ma"></td>
+<td><a href="javascript:mese(31)">Mese+</a></td>
+</tr>
+<tr>
+<th>Lu</th>
+<th>Ma</th>
+<th>Me</th>
+<th>Gi</th>
+<th>Ve</th>
+<th>Sa</th>
+<th>Do</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<script>
+<!--
+var data=new Date();
+data.setDate(1);
+var msperg = 24 * 3600 * 1000;
+mese(0);
+
+function mese(dif){
+	data.setTime(data.getTime() + dif * msperg);
+	data.setDate(1);
+	meseanno();
+	scrivi();
+}
+
+function scrivi(){
+	var i;
+	var d1 = new Date(1996,0,1);
+	var dd = new Date();
+	dd.setTime(data.getTime());
+	var m = dd.getMonth();
+	var flag = true;
+	var ce = new Array(31);
+	for (i=1; i<=31; i++){
+		if (flag==true) {
+			var diff = Math.floor((dd.getTime()-d1.getTime())/msperg);
+			var td = modulo(diff + 7, 4);
+			var tn = modulo(diff + 6, 4);
+			var st = modulo(Math.floor((diff + 2) / 4) + 9, 8) + 1;
+        	ce[i-1]=String.fromCharCode(65+td) + st + String.fromCharCode(65+tn) + st;
+        	dd.setTime(dd.getTime()+msperg);
+        	var mm=dd.getMonth();
+        	if (m != mm)
+        		flag=false;
+		} else {
+			ce[i-1]="";
+		}
+	}
+	var celle=document.getElementsByTagName("td");
+	for (i=3; i<45; i++){
+		celle[i].innerHTML="";
+	}
+	var gs = modulo(data.getDay()+ 6, 7);
+	for (i=1; i<=31; i++){
+		if (ce[i-1].length > 0)
+			celle[i+2+gs].innerHTML="<b>"+i+"</b><br>"+ce[i-1];
+	}
+}
+
+function modulo(num, den){
+	return ((num % den) + den) % den;
+}
+
+function meseanno(){
+	var mesi=new Array("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
+	document.getElementById("ma").innerHTML=mesi[data.getMonth()] + " " + data.getFullYear();
+}
+-->
+</script>
+</body>
+</html>
